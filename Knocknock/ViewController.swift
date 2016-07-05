@@ -12,8 +12,8 @@ import WebKit
 let PROCESS_POOL = "MainProcessPool"
 
 
-class ViewController: UIViewController, WKNavigationDelegate {
-    var mainWebView:WKWebView!
+class ViewController: UIViewController, UIWebViewDelegate {
+    var mainWebView:UIWebView!
     //ff5722
     //98205027
     @IBOutlet weak var fresher: UIActivityIndicatorView!
@@ -35,7 +35,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         ///   SHOULD SETUP COOKIES
         let config = WKWebViewConfiguration()
         config.processPool = WKProcessPool()
-        mainWebView = WKWebView(frame: frame)
+        mainWebView = UIWebView(frame: frame)
         
         //mainWebView.navigationDelegate = self
         if let url = NSURL(string: "https://granny.io") {
@@ -43,21 +43,19 @@ class ViewController: UIViewController, WKNavigationDelegate {
             mainWebView.loadRequest(req)
         }
         
-        mainWebView.navigationDelegate = self
+        mainWebView.delegate = self
         mainWebView.scrollView.bounces = false  //TODO: temporary
         view.addSubview(mainWebView)
         mainWebView.hidden = true
         refreshApp.hidden = true
         noNetLabel.hidden = true
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.checkCookies), userInfo: nil, repeats: true)
+        //timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.checkCookies), userInfo: nil, repeats: true)
     }
     
-    
-    
-    func checkCookies() {
-        print(NSHTTPCookieStorage.sharedHTTPCookieStorage())
-    }
+//    func checkCookies() {
+//        print(NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies)
+//    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -70,38 +68,17 @@ class ViewController: UIViewController, WKNavigationDelegate {
         return UIStatusBarStyle.LightContent
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webViewDidFinishLoad(webView: UIWebView) {
         fresher.stopAnimating()
         fresher.hidden = true
         mainWebView.hidden = false
     }
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         fresher.stopAnimating()
         fresher.hidden = true
         refreshApp.hidden = false
         noNetLabel.hidden = false
-
-    }
-    
-    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
-        fresher.stopAnimating()
-        fresher.hidden = true
-        refreshApp.hidden = false
-        noNetLabel.hidden = false
-    }
-    
-    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        if let res = navigationResponse.response as? NSHTTPURLResponse {
-            if let fields = res.allHeaderFields as? [String: String] {
-                let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: res.URL!)
-                for cookie in cookies {
-                    NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(cookie)
-                }
-                decisionHandler(WKNavigationResponsePolicy.Allow)
-            }
-            
-        }
-        
     }
 
     @IBAction func appRefresh(sender: UIButton) {
