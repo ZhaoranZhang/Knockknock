@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Knocknock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7s-HW-JLl">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="M50-uW-Fhu">
+                                        <variation key="widthClass=compact" constant="85"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="M50-uW-Fhu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="M50-uW-Fhu"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="e8O-vI-Mdo">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVz-pf-cf5">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Zoz-PA-jt1">
+                                        <variation key="widthClass=compact" constant="40"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="40" id="jMn-Lg-sFM">
+                                        <variation key="widthClass=compact" constant="40"/>
+                                    </constraint>
+                                </constraints>
+                                <state key="normal" title="No Internet Connection" image="refresh"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Zoz-PA-jt1"/>
+                                        <exclude reference="jMn-Lg-sFM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Zoz-PA-jt1"/>
+                                        <include reference="jMn-Lg-sFM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="appRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEM-OR-vkr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlB-2l-2WO">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BVz-pf-cf5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7DV-XM-NZg"/>
+                            <constraint firstItem="a7s-HW-JLl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FY7-0T-ct8"/>
+                            <constraint firstItem="e8O-vI-Mdo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WLI-yM-Ydp"/>
+                            <constraint firstItem="QlB-2l-2WO" firstAttribute="top" secondItem="BVz-pf-cf5" secondAttribute="bottom" id="Yqs-sY-XlD"/>
+                            <constraint firstItem="BVz-pf-cf5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lEE-qu-FgX"/>
+                            <constraint firstItem="e8O-vI-Mdo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lgu-eq-u79"/>
+                            <constraint firstAttribute="trailing" secondItem="a7s-HW-JLl" secondAttribute="trailing" id="nSn-W9-q6m"/>
+                            <constraint firstItem="a7s-HW-JLl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pSq-aV-OR8"/>
+                            <constraint firstItem="QlB-2l-2WO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tdr-b5-cTU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="a7s-HW-JLl"/>
+                                <exclude reference="e8O-vI-Mdo"/>
+                                <exclude reference="BVz-pf-cf5"/>
+                                <exclude reference="QlB-2l-2WO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="FY7-0T-ct8"/>
+                                <exclude reference="nSn-W9-q6m"/>
+                                <exclude reference="pSq-aV-OR8"/>
+                                <exclude reference="7DV-XM-NZg"/>
+                                <exclude reference="lEE-qu-FgX"/>
+                                <exclude reference="WLI-yM-Ydp"/>
+                                <exclude reference="lgu-eq-u79"/>
+                                <exclude reference="Yqs-sY-XlD"/>
+                                <exclude reference="tdr-b5-cTU"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="a7s-HW-JLl"/>
+                                <include reference="e8O-vI-Mdo"/>
+                                <include reference="BVz-pf-cf5"/>
+                                <include reference="QlB-2l-2WO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="FY7-0T-ct8"/>
+                                <include reference="nSn-W9-q6m"/>
+                                <include reference="pSq-aV-OR8"/>
+                                <include reference="7DV-XM-NZg"/>
+                                <include reference="lEE-qu-FgX"/>
+                                <include reference="WLI-yM-Ydp"/>
+                                <include reference="lgu-eq-u79"/>
+                                <include reference="Yqs-sY-XlD"/>
+                                <include reference="tdr-b5-cTU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="fresher" destination="e8O-vI-Mdo" id="RRH-P8-VEX"/>
+                        <outlet property="noNetLabel" destination="QlB-2l-2WO" id="Vft-oj-lqJ"/>
+                        <outlet property="refreshApp" destination="BVz-pf-cf5" id="hYB-le-kHx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910.5" y="597"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="refresh" width="64" height="64"/>
+    </resources>
+</document>
